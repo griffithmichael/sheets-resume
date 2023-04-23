@@ -1,6 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { useEffect, useState } from 'react';
+import { Contact } from './Sections/Contact';
+import { About } from './Sections/About';
+import { Service } from './Sections/Service';
+import { Intro } from './Sections/Intro';
+import { Footer } from './Sections/Footer';
+import { Work } from './Sections/Work';
 import {
   faFacebookF,
   faLinkedinIn,
@@ -46,7 +52,7 @@ function checkLoading(data) {
 }
 
 function App() {
-  const options = {
+  const dateOptions = {
     year: 'numeric',
     month: 'long',
   };
@@ -93,423 +99,45 @@ function App() {
         {/* <!-- CONTENT AREA INNER --> */}
         <div className="content-area-inner">
           {/* <!-- INTRO --> */}
-          <section id="intro">
-            {/* <!-- CONTAINER MID --> */}
-            <div className="container-mid">
-              {/* <!-- ANIMATION CONTAINER --> */}
-              {/* <!-- <div
-              className="animation-container animation-fade-down"
-              data-animation-delay="0"
-            >
-              <h1>I’m John Miller,</h1>
-            </div> --> */}
-
-              <div>
-                <h1>I’m Mike Griffith,</h1>
-              </div>
-              {/* <!-- /ANIMATION CONTAINER --> */}
-              {/* <!-- ANIMATION CONTAINER --> */}
-              {/* <!-- <div
-              className="animation-container animation-fade-left"
-              data-animation-delay="300"
-            > --> */}
-              {checkLoading(bio)}
-              <p className="subline">{bio.Value}</p>
-              {/* <!-- </div> --> */}
-              {/* <!-- /ANIMATION CONTAINER --> */}
-              {/* <!-- ANIMATION CONTAINER --> */}
-              {/* <!-- <div
-              className="animation-container animation-fade-up"
-              data-animation-delay="600"
-            > --> */}
-              <a href="#about" className="smooth-scroll">
-                Learn More
-                <i
-                  className="fa fa-angle-down"
-                  aria-hidden="true"
-                ></i>
-              </a>
-              {/* <!-- </div> --> */}
-              {/* <!-- /ANIMATION CONTAINER --> */}
-            </div>
-            {/* <!-- /CONTAINER MID --> */}
-          </section>
+          <Intro checkLoading={checkLoading} bio={bio} />
           {/* <!-- /INTRO --> */}
 
           {/* <!-- ABOUT --> */}
-          <section id="about">
-            <h3 className="headline scroll-animated-from-right">
-              This page.
-            </h3>
-
-            {checkLoading(siteDescription)}
-            <p
-              className="scroll-animated-from-right"
-              dangerouslySetInnerHTML={{
-                __html: siteDescription.Value,
-              }}
-            />
-
-            {/* <p className="scroll-animated-from-right">
-              Duis consectetur massa sit amet nibh rhoncus, at
-              pharetra ligula aliquet. Ut ac velit vestibulum,
-              eleifend diam ut, malesuada nisi. Sed vel felis vitae
-              diam luctus commodo. Nunc ipsum est, vulputate id orci
-              ac, luctus consectetur sapien.
-            </p> */}
-          </section>
+          <About
+            checkLoading={checkLoading}
+            siteDescription={siteDescription}
+          />
           {/* <!-- /ABOUT --> */}
 
           {/* <!-- SERVICE --> */}
-          <section id="service">
-            <h3 className="headline scroll-animated-from-right">
-              What I can do for you.
-            </h3>
-
-            {/* <!-- SERVICE LIST --> */}
-            <ul className="services-list">
-              {/* <li className="scroll-animated-from-right">
-                <i
-                  className="fa fa-pencil-square-o"
-                  aria-hidden="true"
-                ></i>
-                Concept & Strategy
-              </li> */}
-              {checkLoading(skills)}
-              {skills.map((skill) => {
-                return (
-                  <li
-                    key={skill.id}
-                    className="scroll-animated-from-right"
-                  >
-                    {/* <i
-                      className="fa-solid fa-computer"
-                      aria-hidden="true"
-                    > */}
-                    <FontAwesomeIcon
-                      style={{ paddingRight: 10 }}
-                      icon={skill.Icon}
-                    />
-                    {/* </i> */}
-                    {skill.Category}
-                    <p>{skill.Value}</p>
-                  </li>
-                );
-              })}
-            </ul>
-            {/* <!-- /SERVICE LIST --> */}
-          </section>
+          <Service checkLoading={checkLoading} skills={skills} />
           {/* <!-- /SERVICE --> */}
 
           {/* <!-- WORK --> */}
-          <section id="work">
-            <h3 className="headline scroll-animated-from-right">
-              Work Experience.
-            </h3>
-
-            {checkLoading(experience)}
-            {experience.map((job) => {
-              return (
-                <>
-                  {/* <!-- SHOWCASE --> */}
-                  <div key={job.id} className="showcase">
-                    {/* <!-- ITEM --> */}
-                    <div className="item scroll-animated-from-right">
-                      {/* <!-- LIGHTBOX LINK --> */}
-                      {/* <a
-                        href="#"
-                        data-featherlight="#item-1-lightbox"
-                      > */}
-                      {/* <!-- INFO --> */}
-                      <div
-                        className="info"
-                        style={{ background: job.Colour }}
-                      >
-                        {/* <div className="purple"> */}
-                        {/* <!-- CONTAINER MID --> */}
-                        <div className="container-mid">
-                          <h5>{job.Company}</h5>
-                          <p>
-                            {new Date(
-                              job.StartDate
-                            ).toLocaleDateString('en-US', options)}
-                            -
-                            {new Date(job.EndDate).toLocaleDateString(
-                              'en-US',
-                              options
-                            )}
-                          </p>
-                          <p>{job.Title}</p>
-                        </div>
-                        {/* <!-- /CONTAINER MID --> */}
-                        {/* </div> */}
-                      </div>
-                      {/* <!-- /INFO --> */}
-
-                      <div
-                        className="background-image"
-                        //   style="
-                        //   background-image: url(assets/img/work/item-1.jpg);
-                        // "
-                      ></div>
-                      {/* </a> */}
-                      {/* <!-- /LIGHTBOX LINK --> */}
-                      {/* <!-- LIGHTBOX --> */}
-                      <div
-                        id="item-1-lightbox"
-                        className="work-lightbox"
-                      >
-                        <img
-                          className="img-responsive"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                          }}
-                          src={job.ImageUrl}
-                          alt="meaningful"
-                        />
-
-                        {/* <h3>{job.Company}</h3>
-                        <p className="subline">{job.Title}</p>
-
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit. Etiam semper faucibus eros,
-                          quis imperdiet sapien. Nam sodales nec risus
-                          nec interdum. Proin lobortis, ex condimentum
-                          ultricies eleifend, nisl nunc sollicitudin
-                          odio, eget egestas est turpis et metus. In
-                          non ligula quis mauris rutrum porta.
-                        </p> */}
-                      </div>
-                      {/* <!-- /LIGHTBOX --> */}
-                    </div>
-                    {/* <!-- /ITEM --> */}
-                  </div>
-                  {/* <!-- /SHOWCASE --> */}
-                  <br />
-                </>
-              );
-            })}
-          </section>
+          <Work
+            checkLoading={checkLoading}
+            experience={experience}
+            dateOptions={dateOptions}
+          />
           {/* <!-- /WORK --> */}
 
-          {/* <!-- WORK --> */}
-          <section id="education">
-            <h3 className="headline scroll-animated-from-right">
-              Education.
-            </h3>
-            {checkLoading(education)}
-            {education.map((experience) => {
-              return (
-                <>
-                  {/* <!-- SHOWCASE --> */}
-                  <div key={experience.id} className="showcase">
-                    {/* <!-- ITEM --> */}
-                    <div className="item scroll-animated-from-right">
-                      {/* <!-- LIGHTBOX LINK --> */}
-                      {/* <a
-                        href="#"
-                        data-featherlight="#item-1-lightbox"
-                      > */}
-                      {/* <!-- INFO --> */}
-                      <div
-                        className="info"
-                        style={{ background: experience.Colour }}
-                      >
-                        {/* <div className="purple"> */}
-                        {/* <!-- CONTAINER MID --> */}
-                        <div className="container-mid">
-                          <h5>{experience.Location}</h5>
-                          <p>
-                            {new Date(
-                              experience.StartDate
-                            ).toLocaleDateString('en-US', options)}
-                            -
-                            {new Date(
-                              experience.EndDate
-                            ).toLocaleDateString('en-US', options)}
-                          </p>
-                          <p>{experience.Program}</p>
-                        </div>
-                        {/* <!-- /CONTAINER MID --> */}
-                        {/* </div> */}
-                      </div>
-                      {/* <!-- /INFO --> */}
-
-                      <div
-                        className="background-image"
-                        //   style="
-                        //   background-image: url(assets/img/work/item-1.jpg);
-                        // "
-                      ></div>
-                      {/* </a> */}
-                      {/* <!-- /LIGHTBOX LINK --> */}
-                      {/* <!-- LIGHTBOX --> */}
-                      <div
-                        id="item-1-lightbox"
-                        className="work-lightbox"
-                      >
-                        <img
-                          className="img-responsive"
-                          style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                          }}
-                          src={experience.ImageUrl}
-                          alt="meaningful"
-                        />
-
-                        {/* <h3>{job.Company}</h3>
-                        <p className="subline">{job.Title}</p>
-
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur
-                          adipiscing elit. Etiam semper faucibus eros,
-                          quis imperdiet sapien. Nam sodales nec risus
-                          nec interdum. Proin lobortis, ex condimentum
-                          ultricies eleifend, nisl nunc sollicitudin
-                          odio, eget egestas est turpis et metus. In
-                          non ligula quis mauris rutrum porta.
-                        </p> */}
-                      </div>
-                      {/* <!-- /LIGHTBOX --> */}
-                    </div>
-                    {/* <!-- /ITEM --> */}
-                  </div>
-                  {/* <!-- /SHOWCASE --> */}
-                  <br />
-                </>
-              );
-            })}
-          </section>
+          {/* <!-- EDUCATION --> */}
+          <Work
+            checkLoading={checkLoading}
+            experience={education}
+            dateOptions={dateOptions}
+          />
           {/* <!-- /EDUCATION --> */}
 
           {/* <!-- CONTACT --> */}
-          <section id="contact">
-            <h3 className="headline scroll-animated-from-right">
-              Contact Me.
-            </h3>
-
-            {checkLoading(contactMethods)}
-            {/* <!-- CONTACT LIST --> */}
-            <ul className="contact-list">
-              {contactMethods.map((contactMethod) => {
-                return (
-                  <li
-                    key={contactMethod.id}
-                    className="scroll-animated-from-right"
-                  >
-                    {/* {contactMethod.Icon} */}
-                    <i
-                      // className="fa fa-mobile"
-                      aria-hidden="true"
-                    ></i>
-                    <FontAwesomeIcon
-                      style={{ paddingRight: 10 }}
-                      icon={contactMethod.Icon}
-                    />
-
-                    {contactMethod.Value}
-                  </li>
-                );
-              })}
-            </ul>
-            {/* <!-- /CONTACT LIST --> */}
-
-            {/* <!-- CONTACT FORM --> */}
-            {/* <form
-              id="contact-form"
-              action="assets/php/contact.php"
-              method="post"
-            >
-              <input
-                id="contact-form-name"
-                type="text"
-                name="name"
-                className="form-control scroll-animated-from-right"
-                placeholder="* Your Name"
-              />
-
-              <input
-                id="contact-form-email"
-                type="text"
-                name="email"
-                className="form-control scroll-animated-from-right"
-                placeholder="* Your Email"
-              />
-
-              <div className="fhp-input">
-                <input
-                  id="contact-form-company"
-                  type="text"
-                  name="company"
-                  className="form-control"
-                />
-              </div>
-
-              <textarea
-                id="contact-form-message"
-                name="message"
-                className="form-control scroll-animated-from-right"
-                placeholder="* Your Message"
-              ></textarea>
-
-              <button
-                type="submit"
-                className="form-control scroll-animated-from-right"
-              >
-                Send Mail
-              </button>
-
-              <div className="success-message">
-                * The Email was Sent Successfully!
-              </div>
-            </form> */}
-            {/* <!-- /CONTACT FORM --> */}
-          </section>
+          <Contact
+            checkLoading={checkLoading}
+            contactMethods={contactMethods}
+          />
           {/* <!-- /CONTACT --> */}
 
           {/* <!-- FOOTER --> */}
-          <section id="footer">
-            {/* <!-- SOCIAL ICONS --> */}
-            <ul className="social-icons scroll-animated-from-right">
-              <li>
-                <a
-                  href="https://www.facebook.com/mike.griffith.188"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa fa-facebook" aria-hidden="true">
-                    <FontAwesomeIcon icon={faFacebookF} size="1x" />
-                  </i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/griffithmichael"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa fa-linkedin" aria-hidden="true">
-                    <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
-                  </i>
-                </a>
-              </li>
-            </ul>
-            {/* <!-- /SOCIAL ICONS --> */}
-
-            <p className="scroll-animated-from-right">
-              © {new Date().getFullYear()} Griffith | Design by
-              <a
-                href="https://templatefoundation.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Template Foundation
-              </a>
-            </p>
-          </section>
+          <Footer />
           {/* <!-- /FOOTER --> */}
         </div>
         {/* <!-- /CONTENT AREA INNER --> */}
