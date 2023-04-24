@@ -216,6 +216,11 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* .img-responsive {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+} */
 
 @media (max-width: 1200px) {
   .image-container {
@@ -244,7 +249,7 @@ a:hover {
   left: 50%;
 
   width: 50%;
-  padding: 0 20px;
+  /* padding: 0 20px; */
   overflow-x: hidden;
 }
 
@@ -266,7 +271,7 @@ a:hover {
     left: 0;
 
     width: 100%;
-    padding: 0 20px;
+    padding: 0 1 10px;
   }
 }
 
@@ -399,7 +404,7 @@ a:hover {
   opacity: 0;
 }
 
-#intro .animation-container.animation-fade-down.run-animation {
+.animation-container.animation-fade-down.run-animation {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
@@ -407,7 +412,7 @@ a:hover {
   opacity: 1;
 }
 
-#intro .animation-container.animation-fade-left {
+.animation-container.animation-fade-left {
   -webkit-transform: translateX(10vh);
   -ms-transform: translateX(10vh);
   transform: translateX(10vh);
@@ -415,7 +420,7 @@ a:hover {
   opacity: 0;
 }
 
-#intro .animation-container.animation-fade-left.run-animation {
+.animation-container.animation-fade-left.run-animation {
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
@@ -423,7 +428,7 @@ a:hover {
   opacity: 1;
 }
 
-#intro .animation-container.animation-fade-right {
+.animation-container.animation-fade-right {
   -webkit-transform: translateX(-10vh);
   -ms-transform: translateX(-10vh);
   transform: translateX(-10vh);
@@ -431,7 +436,7 @@ a:hover {
   opacity: 0;
 }
 
-#intro .animation-container.animation-fade-right.run-animation {
+.animation-container.animation-fade-right.run-animation {
   -webkit-transform: translateX(0);
   -ms-transform: translateX(0);
   transform: translateX(0);
@@ -656,7 +661,7 @@ a:hover {
 }
 
 .featherlight .featherlight-content .work-lightbox img {
-  /* margin: 0 auto 4vh auto; */
+  margin: 0 auto 4vh auto;
   display: flex;
   justify-content: center;
 }
@@ -947,4 +952,81 @@ a:hover {
 #footer p a {
   color: #000;
   border-bottom: 1px solid #111;
+}
+
+.fade-in {
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 5s;
+  animation: slide-out 2s linear;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  animation: slide-in 2s linear;
+}
+
+.show-right {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+  animation: slide-in-right 2s linear;
+}
+
+/* .show .showcase:nth-child(1) {
+  animation-delay: 2s;
+}
+.show .showcase:nth-child(2) {
+  animation-delay: 3s;
+}
+.show .showcase:nth-child(3) {
+  animation-delay: 4s;
+}
+.show .showcase:nth-child(4) {
+  animation-delay: 2s;
+} */
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }

@@ -1,8 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useInView } from 'react-intersection-observer';
 
-export const Service = ({ checkLoading, skills }) => {
+const Service = ({ checkLoading, skills }) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <section id="service">
+    <section
+      id="service"
+      ref={ref}
+      className={inView ? 'show' : 'hidden'}
+    >
       <h3 className="headline scroll-animated-from-right">
         What I can do for you.
       </h3>
@@ -28,3 +38,4 @@ export const Service = ({ checkLoading, skills }) => {
     </section>
   );
 };
+export default Service;

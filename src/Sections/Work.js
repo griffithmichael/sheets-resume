@@ -1,8 +1,19 @@
-export const Work = ({ checkLoading, experience, dateOptions }) => {
+import { useInView } from 'react-intersection-observer';
+
+const Work = ({ checkLoading, experience, dateOptions, title }) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <section id="work">
+    <section
+      id={title}
+      ref={ref}
+      className={inView ? 'show' : 'hidden'}
+    >
       <h3 className="headline scroll-animated-from-right">
-        Work Experience.
+        {title}.
       </h3>
 
       {checkLoading(experience)}
@@ -17,9 +28,9 @@ export const Work = ({ checkLoading, experience, dateOptions }) => {
           ImageUrl,
         }) => {
           return (
-            <>
+            <div key={id}>
               {/* <!-- SHOWCASE --> */}
-              <div key={id} className="showcase">
+              <div className="showcase">
                 {/* <!-- ITEM --> */}
                 <div className="item scroll-animated-from-right">
                   {/* <!-- LIGHTBOX LINK --> */}
@@ -69,6 +80,7 @@ export const Work = ({ checkLoading, experience, dateOptions }) => {
                       style={{
                         maxWidth: '100%',
                         maxHeight: '100%',
+                        minHeight: '250px',
                       }}
                       src={ImageUrl}
                       alt="meaningful"
@@ -93,10 +105,11 @@ export const Work = ({ checkLoading, experience, dateOptions }) => {
               </div>
               {/* <!-- /SHOWCASE --> */}
               <br />
-            </>
+            </div>
           );
         }
       )}
     </section>
   );
 };
+export default Work;

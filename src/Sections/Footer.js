@@ -4,7 +4,7 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <section id="footer">
       {/* <!-- SOCIAL ICONS --> */}
@@ -47,3 +47,4 @@ export const Footer = () => {
     </section>
   );
 };
+export default Footer;

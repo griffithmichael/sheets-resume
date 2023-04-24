@@ -1,6 +1,18 @@
-export const Intro = ({ checkLoading, bio, bio: { Value } }) => {
+import { useInView } from 'react-intersection-observer';
+
+const Intro = ({ checkLoading, bio, bio: { Value } }) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <section id="intro">
+    <section
+      id="intro"
+      ref={ref}
+      className={inView ? 'show' : 'hidden'}
+      style={{ marginBottom: '100px' }}
+    >
       {/* <!-- CONTAINER MID --> */}
       <div className="container-mid">
         <div>
@@ -16,3 +28,4 @@ export const Intro = ({ checkLoading, bio, bio: { Value } }) => {
     </section>
   );
 };
+export default Intro;

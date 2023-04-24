@@ -1,12 +1,12 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { useEffect, useState } from 'react';
-import { Contact } from './Sections/Contact';
-import { About } from './Sections/About';
-import { Service } from './Sections/Service';
-import { Intro } from './Sections/Intro';
-import { Footer } from './Sections/Footer';
-import { Work } from './Sections/Work';
+import Contact from './Sections/Contact';
+import About from './Sections/About';
+import Service from './Sections/Service';
+import Intro from './Sections/Intro';
+import Footer from './Sections/Footer';
+import Work from './Sections/Work';
 import {
   faFacebookF,
   faLinkedinIn,
@@ -38,6 +38,20 @@ function setData(url, setData) {
     .then((response) => response.json())
     .then((response) => setData(response.data));
 }
+
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach((entry) => {
+//     console.log(entry);
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add('show');
+//     } else {
+//       entry.target.classList.remove('show');
+//     }
+//   });
+// });
+
+// const hiddenElements = document.querySelectorAll('.hidden');
+// hiddenElements.forEach((el) => observer.observe(el));
 
 function checkLoading(data) {
   // if (data.length < 1) console.log(typeof data.length);
@@ -90,7 +104,7 @@ function App() {
   return (
     <>
       <div className="image-container">
-        <div className="background-img"></div>
+        <div className="background-img fade-in"></div>
       </div>
       {/* <!-- /IMAGE CONTAINER --> */}
 
@@ -118,6 +132,7 @@ function App() {
             checkLoading={checkLoading}
             experience={experience}
             dateOptions={dateOptions}
+            title="Work"
           />
           {/* <!-- /WORK --> */}
 
@@ -126,6 +141,7 @@ function App() {
             checkLoading={checkLoading}
             experience={education}
             dateOptions={dateOptions}
+            title="Education"
           />
           {/* <!-- /EDUCATION --> */}
 

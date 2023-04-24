@@ -1,8 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useInView } from 'react-intersection-observer';
 
-export const Contact = ({ contactMethods, checkLoading }) => {
+const Contact = ({ contactMethods, checkLoading }) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <section id="contact">
+    <section
+      id="contact"
+      ref={ref}
+      className={inView ? 'show' : 'hidden'}
+    >
       <h3 className="headline scroll-animated-from-right">
         Contact Me.
       </h3>
@@ -32,3 +42,5 @@ export const Contact = ({ contactMethods, checkLoading }) => {
     </section>
   );
 };
+
+export default Contact;
