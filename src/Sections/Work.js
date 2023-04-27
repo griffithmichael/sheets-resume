@@ -85,8 +85,10 @@ const Work = ({
                       className="img-responsive"
                       style={{
                         maxWidth: '100%',
-                        maxHeight: '100%',
-                        minHeight: '250px',
+                        // maxHeight: '100%',
+                        // minHeight: '250px',
+                        // minHeight: '100%',
+                        objectFit: 'fill',
                       }}
                       src={ImageUrl}
                       alt="meaningful"
