@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useInView } from 'react-intersection-observer';
 
-const Contact = ({ contactMethods, checkLoading }) => {
+const Contact = ({ contactMethods, checkLoading, direction }) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -11,7 +11,7 @@ const Contact = ({ contactMethods, checkLoading }) => {
     <section
       id="contact"
       ref={ref}
-      className={inView ? 'show' : 'hidden'}
+      className={inView ? `slide-in-${direction}` : 'hidden'}
     >
       <h3 className="headline scroll-animated-from-right">
         Contact Me.

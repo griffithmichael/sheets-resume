@@ -113,18 +113,27 @@ function App() {
         {/* <!-- CONTENT AREA INNER --> */}
         <div className="content-area-inner">
           {/* <!-- INTRO --> */}
-          <Intro checkLoading={checkLoading} bio={bio} />
+          <Intro
+            checkLoading={checkLoading}
+            bio={bio}
+            direction="left"
+          />
           {/* <!-- /INTRO --> */}
 
           {/* <!-- ABOUT --> */}
           <About
             checkLoading={checkLoading}
             siteDescription={siteDescription}
+            direction="right"
           />
           {/* <!-- /ABOUT --> */}
 
           {/* <!-- SERVICE --> */}
-          <Service checkLoading={checkLoading} skills={skills} />
+          <Service
+            checkLoading={checkLoading}
+            skills={skills}
+            direction="left"
+          />
           {/* <!-- /SERVICE --> */}
 
           {/* <!-- WORK --> */}
@@ -133,6 +142,7 @@ function App() {
             experience={experience}
             dateOptions={dateOptions}
             title="Work"
+            direction="right"
           />
           {/* <!-- /WORK --> */}
 
@@ -142,6 +152,7 @@ function App() {
             experience={education}
             dateOptions={dateOptions}
             title="Education"
+            direction="left"
           />
           {/* <!-- /EDUCATION --> */}
 
@@ -149,11 +160,12 @@ function App() {
           <Contact
             checkLoading={checkLoading}
             contactMethods={contactMethods}
+            direction="right"
           />
           {/* <!-- /CONTACT --> */}
 
           {/* <!-- FOOTER --> */}
-          <Footer />
+          <Footer direction="left" />
           {/* <!-- /FOOTER --> */}
         </div>
         {/* <!-- /CONTENT AREA INNER --> */}

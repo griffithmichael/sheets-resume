@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 
-const Intro = ({ checkLoading, bio, bio: { Value } }) => {
+const Intro = ({ checkLoading, bio, bio: { Value }, direction }) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -10,7 +10,7 @@ const Intro = ({ checkLoading, bio, bio: { Value } }) => {
     <section
       id="intro"
       ref={ref}
-      className={inView ? 'show' : 'hidden'}
+      className={inView ? `slide-in-${direction}` : 'hidden'}
       style={{ marginBottom: '100px' }}
     >
       {/* <!-- CONTAINER MID --> */}

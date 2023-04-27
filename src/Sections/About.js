@@ -4,6 +4,7 @@ const About = ({
   checkLoading,
   siteDescription,
   siteDescription: { Value },
+  direction,
 }) => {
   const { ref, inView } = useInView({
     /* Optional options */
@@ -14,7 +15,7 @@ const About = ({
     <section
       id="about"
       ref={ref}
-      className={inView ? 'show-right' : 'hidden'}
+      className={inView ? `slide-in-${direction}` : 'hidden'}
     >
       <h3 className="headline scroll-animated-from-right">
         This page.

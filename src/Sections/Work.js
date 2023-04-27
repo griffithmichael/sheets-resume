@@ -1,6 +1,12 @@
 import { useInView } from 'react-intersection-observer';
 
-const Work = ({ checkLoading, experience, dateOptions, title }) => {
+const Work = ({
+  checkLoading,
+  experience,
+  dateOptions,
+  title,
+  direction,
+}) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -10,7 +16,7 @@ const Work = ({ checkLoading, experience, dateOptions, title }) => {
     <section
       id={title}
       ref={ref}
-      className={inView ? 'show' : 'hidden'}
+      className={inView ? `slide-in-${direction}` : 'hidden'}
     >
       <h3 className="headline scroll-animated-from-right">
         {title}.

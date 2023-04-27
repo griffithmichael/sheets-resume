@@ -3,10 +3,20 @@ import {
   faFacebookF,
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
+import { useInView } from 'react-intersection-observer';
 
-const Footer = () => {
+const Footer = ({ direction }) => {
+  const { ref, inView } = useInView({
+    /* Optional options */
+    threshold: 0,
+    triggerOnce: true,
+  });
   return (
-    <section id="footer">
+    <section
+      id="footer"
+      ref={ref}
+      className={inView ? `slide-in-${direction}` : 'hidden'}
+    >
       {/* <!-- SOCIAL ICONS --> */}
       <ul className="social-icons scroll-animated-from-right">
         <li>
