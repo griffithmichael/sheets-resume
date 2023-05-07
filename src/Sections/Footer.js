@@ -1,11 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebookF,
-  faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons';
 import { useInView } from 'react-intersection-observer';
 
-const Footer = ({ direction }) => {
+const Footer = ({ direction, socials }) => {
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0,
@@ -19,28 +15,17 @@ const Footer = ({ direction }) => {
     >
       {/* <!-- SOCIAL ICONS --> */}
       <ul className="social-icons scroll-animated-from-right">
-        <li>
-          <a
-            href="https://www.facebook.com/mike.griffith.188"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i className="fa fa-facebook" aria-hidden="true">
-              <FontAwesomeIcon icon={faFacebookF} size="1x" />
-            </i>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.linkedin.com/in/griffithmichael"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <i className="fa fa-linkedin" aria-hidden="true">
-              <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
-            </i>
-          </a>
-        </li>
+        {socials.map((social) => {
+          return (
+            <li>
+              <a href={social.Url} target="_blank" rel="noreferrer">
+                <i aria-hidden="true">
+                  <FontAwesomeIcon icon={social.Icon} />
+                </i>
+              </a>
+            </li>
+          );
+        })}
       </ul>
       {/* <!-- /SOCIAL ICONS --> */}
 
